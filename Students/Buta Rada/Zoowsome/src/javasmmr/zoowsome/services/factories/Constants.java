@@ -1,6 +1,11 @@
 package javasmmr.zoowsome.services.factories;
 
 public final class Constants {
+	public static final class XML_TAGS
+	{
+		public static final String DISCRIMINANT="DIISCRIMINANT";
+		public static final String ANIMAL="ANIMAL";
+		}
 
 	public static final class Species {
 		public static final String Mammals = "Mammals";
@@ -8,6 +13,16 @@ public final class Constants {
 		public static final String Birds = "Birds";
 		public static final String Aquatics = "Aquatics";
 		public static final String Insects = "Insects";
+	}
+	public static final class Employee{
+		public static final String Caretakers="Caretaker";
+	}
+	public static final class Employees{
+		public static final class Caretakers {  
+			public static final String TCO_SUCCESS = "SUCCESS";   
+			public static final String TCO_KILLED = "KILLED";    
+			public static final String TCO_NO_TIME = "NO_TIME";   
+		}
 	}
 
 	public static final class Animals {
@@ -52,8 +67,9 @@ public final class Constants {
 			public static final String Butterfly = "BUTTERFLY";
 			public static final String Spider = "SPIDER";
 			// TODO: complete this yourself
-			
+
 		}
 	}
 
+	
 }

@@ -1,35 +1,51 @@
 package javasmmr.zoowsome.models.animals;
 
+import static javasmmr.zoowsome.repositories.AnimalRepository.createNode;
+
+import javax.xml.stream.XMLEventWriter;
+import javax.xml.stream.XMLStreamException;
+
 public abstract class Mammals extends Animals {
   private  float normalBodyTemp;
   private  float percBodyHair;
-	
-  public  Mammals(String name,Integer nrOfLegs,float normalBodyTemp, float percBodyHair)
-	 { 
-		  super(nrOfLegs,name);
-		  this.normalBodyTemp=normalBodyTemp;
-		  this.percBodyHair=percBodyHair;
-	 }
 
 
- public void setNormalBodyTemp(float normalBodyTemp)
+
+
+public Mammals(Double maintenanceCost, Double dangerPerc, float normalBodyTemp, float percBodyHair) {
+	  super(maintenanceCost,dangerPerc);
+	  this.normalBodyTemp=normalBodyTemp;
+	  this.percBodyHair=percBodyHair;
+	  // TODO Auto-generated constructor stub
+}
+
+
+
+
+
+public void setNormalBodyTemp(float normalBodyTemp)
  {
 	  this.normalBodyTemp=normalBodyTemp;
-	  
+
  }
  public float getNormalBodyTemp()
  {
 	 return this.normalBodyTemp;
-	 
+
  }
- 
+
  public float getPercBodyHair()
  {
 	 return this.percBodyHair;
-	 
+
  }
  public void setPercBodyHair(float percBodyHair)
  {
 	  this.percBodyHair=percBodyHair;
  }
+ public void encodeToXml(XMLEventWriter eventWriter) throws XMLStreamException {
+		super.encodeToXml(eventWriter);
+		createNode(eventWriter, "Perc Body Hair", String.valueOf(getPercBodyHair()));
+		createNode(eventWriter, "Normal Body Temp", String.valueOf(getNormalBodyTemp()));
+		}
  }

@@ -18,8 +18,7 @@ public class MammalFactory extends SpeciesFactory {
 					return new Tiger();
 			 }
 		return null;
-		
+
 	}
 
 }
-

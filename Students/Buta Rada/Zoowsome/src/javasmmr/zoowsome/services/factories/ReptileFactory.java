@@ -21,4 +21,3 @@ public class ReptileFactory extends SpeciesFactory {
 	}
 
 }
-

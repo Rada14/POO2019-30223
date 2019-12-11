@@ -22,4 +22,4 @@ public class BirdFactory extends SpeciesFactory {
 			}
 			return null;
 		}
-}
+} 

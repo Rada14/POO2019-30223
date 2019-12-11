@@ -1,25 +1,61 @@
 package javasmmr.zoowsome.controllers;
 
+import java.math.BigDecimal;
+
 import javasmmr.zoowsome.models.animals.Animals;
-import javasmmr.zoowsome.models.animals.Monkey;
+
+
+import javasmmr.zoowsome.models.animals.Parrot;
+
+import javasmmr.zoowsome.models.employees.Caretaker;
+import javasmmr.zoowsome.models.employees.Employees;
 import javasmmr.zoowsome.services.factories.AnimalFactory;
 import javasmmr.zoowsome.services.factories.Constants;
+import javasmmr.zoowsome.services.factories.EmployeeAbstractFactory;
+import javasmmr.zoowsome.services.factories.EmployeeFactory;
 import javasmmr.zoowsome.services.factories.SpeciesFactory;
 
-public class MainController {
-	public static void main(String[] args) {
-		AnimalFactory abstractFactory = new AnimalFactory();
-		Monkey Monkey1= new Monkey();
 
+public class MainController {
+	public static void main(String[] args) throws Exception {
+		AnimalFactory abstractFactory = new AnimalFactory();
 		SpeciesFactory speciesFactory1 = abstractFactory.getSpeciesFactory(Constants.Species.Mammals);
-		Animals a1 = speciesFactory1.getAnimal(Constants.Animals.Mammals.Monkey);
-		System.out.printf("Avem un animal cu %d picioare. \n ", a1.getNrOfLegs() );
-	
-		
-		
-		
+		SpeciesFactory speciesFactory2 = abstractFactory.getSpeciesFactory(Constants.Species.Birds);
+		Animals a1 = speciesFactory1.getAnimal(Constants.Animals.Mammals.Tiger);
+		String name1 = a1.getName();
+		System.out.println(name1);
+		a1.setName("Tigrisor");
+		System.out.println("Am dat numele noului tigru :" + a1.getName());
+		Animals a2 = speciesFactory1.getAnimal(Constants.Animals.Mammals.Cow);
+		a2.setName("Cowy");
+		a2.setNrOfLegs(4);
+		System.out.println("Avem o vaca noua numita " + a2.getName() + " care are " + a2.getNrOfLegs()
+				+ " picioare , are nevoie de " + a2.getMaintenanceCost()
+				+ " ore de grija , iar procentul de pericol la care se expune un angajat avand grija de el este "
+				+ a2.getDangerPerc());
+		Animals a3 = speciesFactory2.getAnimal(Constants.Animals.Birds.Parrot);
+		a3.setName("Coco");
+		a3.setNrOfLegs(2);
+
+		System.out.println("Papagalul nostru se numeste " + a3.getName() + " si are " + a3.getNrOfLegs()
+				+ " picioare.Este periculos in procent de " + a3.getDangerPerc());
+		Parrot p1 = new Parrot();
+		p1.setMigrates(true);
+		p1.setName("Rokko");
+		p1.setNrOfLegs(2);
+		System.out.println("Papagalul " + p1.getName() + " are " + p1.getNrOfLegs() + " picioare.\n " + " Migreaza : "
+				+ p1.getMigrates()+"\nKills: " + p1.kill());
+		EmployeeAbstractFactory f1 = new EmployeeAbstractFactory();
+		EmployeeFactory ef = f1.getEmployeeFactory(Constants.Employee.Caretakers);
+		Employees employee = ef.getEmployee(Constants.Employee.Caretakers);
+		System.out.println(employee.getName());
+		employee.setName("Richard");
+		employee.setIsDead(false);
+		BigDecimal sal1 = new BigDecimal(1234.50);
+		employee.setSalary(sal1);
+		((Caretaker) employee).setHours(23.3);
+		System.out.println("Angajatul numit " + employee.getName() + " are salariul de : " + employee.getSalary()
+				+ " si lucreaza " + ((Caretaker) employee).getHours() + " ore." + " Are grija de " + p1.getName() + ".   Detalii: " + ((Caretaker)employee).takeCareOf(p1));
 
 	}
-
-
 }
