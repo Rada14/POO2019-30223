@@ -5,6 +5,8 @@ import static javasmmr.zoowsome.repositories.AnimalRepository.createNode;
 import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLStreamException;
 
+import org.w3c.dom.Element;
+
 public abstract class Bird extends Animals {
 	private Boolean migrates;
 	private Integer avgFlightAltitude;
@@ -38,6 +40,10 @@ public abstract class Bird extends Animals {
 		super.encodeToXml(eventWriter);
 		createNode(eventWriter, "Migrates", String.valueOf(getMigrates()));
 		createNode(eventWriter, "AvgFlightAltitude", String.valueOf(getAvgFlightAltitude()));
+		}
+	public void decodeFromXml( Element element) {
+		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Migrates").item(0).getTextContent( )));
+		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("AvgFlightAltitude").item(0).getTextContent()) );
 		}
 
 }

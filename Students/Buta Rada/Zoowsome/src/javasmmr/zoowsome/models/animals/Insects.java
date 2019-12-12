@@ -5,6 +5,8 @@ import static javasmmr.zoowsome.repositories.AnimalRepository.createNode;
 import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLStreamException;
 
+import org.w3c.dom.Element;
+
 public abstract class Insects extends Animals {
 
 	private Boolean canFly;
@@ -45,6 +47,9 @@ public abstract class Insects extends Animals {
 		createNode(eventWriter, "Can fly", String.valueOf(getCanFly()));
 		createNode(eventWriter, "Is Dangerous", String.valueOf(getIsDangerous()));
 		}
-
+	public void decodeFromXml( Element element) {
+		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Can Fly").item(0).getTextContent( )));
+		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Is Dangerous").item(0).getTextContent()) );
+		}
 
 }
