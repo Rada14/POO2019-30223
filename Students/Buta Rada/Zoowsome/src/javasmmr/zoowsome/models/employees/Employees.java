@@ -1,5 +1,12 @@
 package javasmmr.zoowsome.models.employees;
-import java.util.Random; 
+import java.util.Random;
+
+import javax.xml.stream.XMLEventWriter;
+import javax.xml.stream.XMLStreamException;
+
+import org.w3c.dom.Element;
+
+import static javasmmr.zoowsome.repositories.AnimalRepository.createNode;
 
 import java.math.BigDecimal;
 
@@ -19,6 +26,7 @@ public Employees(String name,BigDecimal i) {
    this.id=getId();
 	
 }
+
 
 public void setId()
 {
@@ -59,5 +67,24 @@ public Boolean getisDead()
 {
 	return this.isDead;
 }
+public  void setLongSalary(Long salaryLong)
+{   
+     salaryLong=Long.parseLong(String.valueOf(salary));
+    
+}
+
+public void decodeFromXml( Element element) {
+	setName (String.valueOf(element.getElementsByTagName("name").item(0).getTextContent() ));
+setLongSalary(Long.valueOf(element.getElementsByTagName( "salary").item(0).getTextContent())) ;
+	setIsDead(Boolean.valueOf(element.getElementsByTagName("isDead").item(0 ).getTextContent()));
+
+	}
+public void encodeToXml(XMLEventWriter eventWriter) throws XMLStreamException {
+	createNode(eventWriter, "name", String.valueOf(this.name));
+	createNode(eventWriter, "id", String.valueOf(this.id));
+	createNode(eventWriter, "salary", String.valueOf(this.salary));
+	createNode(eventWriter, "isDead", String.valueOf(this.isDead));
+
+	}
 
 }

@@ -5,6 +5,7 @@ public final class Constants {
 	{
 		public static final String DISCRIMINANT="DIISCRIMINANT";
 		public static final String ANIMAL="ANIMAL";
+		public static final String EMPLOYEE = "EMPLOYEE";
 		}
 
 	public static final class Species {

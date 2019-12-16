@@ -48,8 +48,8 @@ public abstract class Insects extends Animals {
 		createNode(eventWriter, "Is Dangerous", String.valueOf(getIsDangerous()));
 		}
 	public void decodeFromXml( Element element) {
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Can Fly").item(0).getTextContent( )));
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Is Dangerous").item(0).getTextContent()) );
+		setCanFly(Boolean.valueOf(element.getElementsByTagName("Can Fly").item(0).getTextContent( )));
+		setIsDangerous(Boolean.valueOf(element.getElementsByTagName("Is Dangerous").item(0).getTextContent()) );
 		}
 
 }

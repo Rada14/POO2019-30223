@@ -42,8 +42,8 @@ public abstract class Bird extends Animals {
 		createNode(eventWriter, "AvgFlightAltitude", String.valueOf(getAvgFlightAltitude()));
 		}
 	public void decodeFromXml( Element element) {
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Migrates").item(0).getTextContent( )));
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("AvgFlightAltitude").item(0).getTextContent()) );
+		setMigrates(Boolean.valueOf(element.getElementsByTagName("Migrates").item(0).getTextContent( )));
+		setAvgFlightAltitude(Integer.valueOf(element.getElementsByTagName("AvgFlightAltitude").item(0).getTextContent()) );
 		}
 
 }

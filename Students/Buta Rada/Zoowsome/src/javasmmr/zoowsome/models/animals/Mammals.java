@@ -45,13 +45,14 @@ public void setNormalBodyTemp(float normalBodyTemp)
  {
 	  this.percBodyHair=percBodyHair;
  }
+
  public void encodeToXml(XMLEventWriter eventWriter) throws XMLStreamException {
 		super.encodeToXml(eventWriter);
 		createNode(eventWriter, "Perc Body Hair", String.valueOf(getPercBodyHair()));
 		createNode(eventWriter, "Normal Body Temp", String.valueOf(getNormalBodyTemp()));
 		}
  public void decodeFromXml( Element element) {
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Perc Body Hair ").item(0).getTextContent( )));
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Normal Body Temp").item(0).getTextContent()) );
+		setPercBodyHair(Float.valueOf(element.getElementsByTagName("Perc Body Hair ").item(0).getTextContent( )));
+		setNormalBodyTemp(Float.valueOf(element.getElementsByTagName("Normal Body Temp").item(0).getTextContent()) );
 		}
  }

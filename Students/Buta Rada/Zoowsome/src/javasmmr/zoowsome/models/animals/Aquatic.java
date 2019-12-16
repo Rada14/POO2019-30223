@@ -47,8 +47,8 @@ public abstract class Aquatic extends Animals {
 		createNode(eventWriter, "Water", String.valueOf(getWater()));
 		}
 	public void decodeFromXml( Element element) {
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("AvgSwimDepth").item(0).getTextContent( )));
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("Water").item(0).getTextContent()) );
+		setAvgSwimDepth(Integer.valueOf(element.getElementsByTagName("AvgSwimDepth").item(0).getTextContent( )));
+		setWater(waterType.valueOf(element.getElementsByTagName("Water").item(0).getTextContent()) );
 		}
 
 }

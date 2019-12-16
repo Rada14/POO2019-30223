@@ -31,7 +31,7 @@ public abstract class Reptile extends Animals {
 	
 		}
  public void decodeFromXml( Element element) {
-		setTakenCareOf(Boolean.valueOf(element.getElementsByTagName("MLays Eggs").item(0).getTextContent( )));
+		setLaysEggs(Boolean.valueOf(element.getElementsByTagName("MLays Eggs").item(0).getTextContent( )));
 
 		}
 }
