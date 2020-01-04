@@ -1,0 +1,23 @@
+<?xml version="1.0"?><content>
+ <EMPLOYEE>
+ 	<name>Manu</name>
+	<id>null</id>
+	<salary>1234.5</salary>
+	<isDead>false</isDead>
+	<Working hours>12.3</Working hours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<name>Alexandra</name>
+	<id>null</id>
+	<salary>1800.90000000000009094947017729282379150390625</salary>
+	<isDead>true</isDead>
+	<Working hours>8.6</Working hours>
+</EMPLOYEE>
+ <EMPLOYEE>
+ 	<name>Patrick</name>
+	<id>null</id>
+	<salary>9000.34000000000014551915228366851806640625</salary>
+	<isDead>false</isDead>
+	<Working hours>23.5</Working hours>
+</EMPLOYEE>
+ </content>

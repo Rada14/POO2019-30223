@@ -1,0 +1,32 @@
+<?xml version="1.0"?><content>
+ <ANIMAL>
+ 	<nrOfLegs>4</nrOfLegs>
+	<name>Tigrisor</name>
+	<maintenanceCost>15.6</maintenanceCost>
+	<dangerPerc>0.9</dangerPerc>
+	<takenCareOf>false</takenCareOf>
+	<Perc Body Hair>40.0</Perc Body Hair>
+	<Normal Body Temp>56.7</Normal Body Temp>
+	<DIISCRIMINANT>TIGER</DIISCRIMINANT>
+</ANIMAL>
+ <ANIMAL>
+ 	<nrOfLegs>4</nrOfLegs>
+	<name>Cowy</name>
+	<maintenanceCost>7.8</maintenanceCost>
+	<dangerPerc>0.3</dangerPerc>
+	<takenCareOf>true</takenCareOf>
+	<Perc Body Hair>78.9</Perc Body Hair>
+	<Normal Body Temp>38.7</Normal Body Temp>
+	<DIISCRIMINANT>COW</DIISCRIMINANT>
+</ANIMAL>
+ <ANIMAL>
+ 	<nrOfLegs>2</nrOfLegs>
+	<name>Coco</name>
+	<maintenanceCost>12.34</maintenanceCost>
+	<dangerPerc>0.2</dangerPerc>
+	<takenCareOf>true</takenCareOf>
+	<Migrates>false</Migrates>
+	<AvgFlightAltitude>450</AvgFlightAltitude>
+	<DIISCRIMINANT>PARROT</DIISCRIMINANT>
+</ANIMAL>
+ </content>

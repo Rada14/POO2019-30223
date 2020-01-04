@@ -12,9 +12,12 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import javasmmr.zoowsome.models.animals.Animals;
+import javasmmr.zoowsome.models.animals.Cow;
 import javasmmr.zoowsome.models.employees.Caretaker;
 import javasmmr.zoowsome.models.employees.Employees;
 import javasmmr.zoowsome.services.factories.Constants;
+import javasmmr.zoowsome.services.factories.Constants.Employee;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -30,56 +33,16 @@ import javax.xml.stream.XMLEventWriter;
 import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamException;
 
-public class EmployeeRepository {
-	
+public class EmployeeRepository extends EntityRepository<Employees> {
 
 	private static final String XML_FILENAME = "Employee.xml";
-	public static void createNode(XMLEventWriter eventWriter, String name, String value) throws
-	XMLStreamException {
-	XMLEventFactory eventFactory = XMLEventFactory.newInstance();
-	XMLEvent end = eventFactory.createDTD("\n");
-	XMLEvent tab = eventFactory.createDTD("\t");
-	// Create Start node
-	StartElement sElement = eventFactory.createStartElement("", "", name);
-	eventWriter.add(tab);
-	eventWriter.add(sElement);
-	// Create Content
-	Characters characters = eventFactory.createCharacters(value);
-	eventWriter.add(characters);
-	// Create End node
-	EndElement eElement = eventFactory.createEndElement("", "", name);
-	eventWriter.add(eElement);
-	eventWriter.add(end);
-	}
+
+
+
 	public EmployeeRepository() {
+		super(XML_FILENAME, Constants.XML_TAGS.EMPLOYEE);
 	}
-	public void save(ArrayList <Employees> employee) throws FileNotFoundException, XMLStreamException {
-		XMLOutputFactory outputFactory = XMLOutputFactory.newInstance() ;
-		// Create X MLEvent Writer
-		XMLEventWriter eventWriter = outputFactory.createXMLEventWriter(new FileOutputStream(XML_FILENAME));
-		// Create a EventFactory
-		XMLEventFactory eventFactory = XMLEventFactory.newInstance();
-		XMLEvent end = eventFactory.createDTD("\n ");
-		// Create and writ e Start Tag
-		StartDocument startDocument = eventFactory.createStartDocument( );
-		eventWriter.add(startDocument);
-		// Create content open tag
-		StartElement configStartElement = eventFactory.createStartElement("", "", "content");
-		eventWriter.add(configStartElement);
-		eventWriter.add(end);
-		for (Employees employees : employee) {
-		StartElement sElement = eventFactory.createStartElement("" , "" , Constants.XML_TAGS.EMPLOYEE);
-		eventWriter.add(sElement);
-		eventWriter.add(end);
-		employees.encodeToXml (eventWriter);
-		EndElement eElement = eventFactory.createEndElement("", "", Constants.XML_TAGS.EMPLOYEE);
-		eventWriter.add(eElement);
-		eventWriter.add(end);
-		}
-		eventWriter.add(eventFactory.createEndElement("", "", " content"));
-		eventWriter.add(eventFactory.createEndDocument() );
-		eventWriter.close( );
-		}
+
 	public ArrayList<Employees> load() throws ParserConfigurationException, SAXException, IOException {
 		ArrayList<Employees> employee = new ArrayList<Employees>();
 		File fXmlFile = new File(XML_FILENAME);
@@ -89,31 +52,36 @@ public class EmployeeRepository {
 		doc.getDocumentElement().normalize();
 		NodeList nodeList = doc.getElementsByTagName(Constants.XML_TAGS.EMPLOYEE);
 		for (int i = 0; i < nodeList.getLength(); i++) {
-		Node node = nodeList.item(i);
-		if (node.getNodeType() == Node.ELEMENT_NODE) {
-		Element element = (Element) node;
-		String discriminant =
-		element.getElementsByTagName(Constants.XML_TAGS.DISCRIMINANT).item(0)
-		.getTextContent();
+			Node node = nodeList.item(i);
+			if (node.getNodeType() == Node.ELEMENT_NODE) {
+				Element element = (Element) node;
+				String discriminant = element.getElementsByTagName(Constants.XML_TAGS.DISCRIMINANT).item(0)
+						.getTextContent();
+				switch (discriminant) {
+				case Constants.Employee.Caretakers:
+					Employees caretaker = new Caretaker(null, null, 0.0);
+					caretaker.decodeFromXml(element);
+					employee.add(caretaker);
+
+				default:
+					break;
+				}
+			}
+		}
+		return employee;
+	}
+	@Override
+	protected Employees getEntityFromXmlElement(Element element) {
+		String discriminant = element.getElementsByTagName(Constants.XML_TAGS.DISCRIMINANT).item(0).getTextContent();
 		switch (discriminant) {
 		case Constants.Employee.Caretakers:
-		Employees caretaker= new Caretaker(null,null,0.0);
-	caretaker.decodeFromXml(element);
-		employee.add(caretaker);
+			Employees caretaker=new Caretaker(null,null,0.0);
+			return caretaker;
+			default:
+				break;
 
-		default:
-		break;
-		}
-		}
-		}
-		return employee ;
-		}
-
-
-
+}
+		return null;
+	}
+}
 		
-	
-		}
-
-	
-

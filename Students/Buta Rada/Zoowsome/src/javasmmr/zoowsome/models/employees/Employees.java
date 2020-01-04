@@ -6,11 +6,13 @@ import javax.xml.stream.XMLStreamException;
 
 import org.w3c.dom.Element;
 
+import javasmmr.zoowsome.models.interfaces.XML_Parsable;
+
 import static javasmmr.zoowsome.repositories.AnimalRepository.createNode;
 
 import java.math.BigDecimal;
 
-public  abstract class Employees  {
+public  abstract class Employees implements XML_Parsable  {
  private String name;
 private Long   id;
 private BigDecimal salary;

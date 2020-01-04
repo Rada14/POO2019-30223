@@ -12,6 +12,7 @@ import javasmmr.zoowsome.models.employees.Caretaker;
 import javasmmr.zoowsome.models.employees.Employees;
 import javasmmr.zoowsome.repositories.AnimalRepository;
 import javasmmr.zoowsome.repositories.EmployeeRepository;
+import javasmmr.zoowsome.repositories.EntityRepository;
 import javasmmr.zoowsome.services.factories.AnimalFactory;
 import javasmmr.zoowsome.services.factories.Constants;
 import javasmmr.zoowsome.services.factories.EmployeeAbstractFactory;
@@ -108,8 +109,9 @@ public class MainController {
               employees.add(employeesWeHave[2]);
              AnimalRepository animalRepository=new AnimalRepository();
              EmployeeRepository employeeRepository=new EmployeeRepository();
-             employeeRepository.save(employees);
-             animalRepository.save(animals);
+            
+              employeeRepository.save(employees);
+                 animalRepository.save(animals);
 	}
 	
 	

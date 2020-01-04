@@ -10,7 +10,9 @@ import javax.xml.stream.XMLStreamException;
 
 import org.w3c.dom.Element;
 
-public abstract class Animals implements Killer {
+import javasmmr.zoowsome.models.interfaces.XML_Parsable;
+
+public abstract class Animals implements Killer,XML_Parsable {
 	private Integer nrOfLegs;
 	private Boolean takenCareof;
 	private String name;
