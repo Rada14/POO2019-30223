@@ -1,6 +1,13 @@
 package javasmmr.zoowsome.services.factories;
 
 public final class Constants {
+	public class FRAMES {
+
+		public static final int WIDTH = 500;
+		public static final int HEIGHT = 700;
+
+	}
+
 	public static final class XML_TAGS
 	{
 		public static final String DISCRIMINANT="DIISCRIMINANT";
@@ -61,6 +68,8 @@ public final class Constants {
 			public static final String StarFish = "STARFISH";
 			public static final String Turtle = "TURTLE";
 		}
+		
+
 
 		public static final class Insects {
 
